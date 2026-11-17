@@ -3,7 +3,7 @@ package CarreraDeHilos;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Representa a un corredor que avanza por una serie de tramos de manera concurrente.
+ * Represento a un corredor que avanza por varios tramos de forma concurrente.
  */
 public class Corredor implements Runnable {
 
@@ -11,10 +11,10 @@ public class Corredor implements Runnable {
     private final ControlCarrera controlCarrera;
 
     /**
-     * Construye una tarea de corredor asociada a un control de meta compartido.
+     * Creo una tarea de corredor asociada a un control de meta compartido.
      *
-     * @param totalTramos    Número total de tramos que componen la carrera.
-     * @param controlCarrera Monitor compartido para registrar la llegada a meta.
+     * @param totalTramos    Número total de tramos que recorro en la carrera.
+     * @param controlCarrera Monitor compartido que uso para registrar mi llegada.
      */
     public Corredor(int totalTramos, ControlCarrera controlCarrera) {
         this.totalTramos = totalTramos;
@@ -22,8 +22,8 @@ public class Corredor implements Runnable {
     }
 
     /**
-     * Ejecuta el recorrido tramo a tramo. Al finalizar el último tramo,
-     * notifica su llegada y muestra por consola que ha terminado.
+     * Recorro los tramos uno a uno. Al terminar el último,
+     * registro mi llegada y muestro por consola que he acabado.
      */
     @Override
     public void run() {
@@ -31,7 +31,7 @@ public class Corredor implements Runnable {
 
         try {
             for (int tramo = 1; tramo <= totalTramos; tramo++) {
-                // Simula el esfuerzo y tiempo variable en recorrer cada tramo (entre 200 y 700 ms)
+                // Simulo el esfuerzo y el tiempo variable de cada tramo (entre 200 y 700 ms)
                 int tiempoTramo = ThreadLocalRandom.current().nextInt(200, 701);
                 Thread.sleep(tiempoTramo);
 
@@ -39,7 +39,7 @@ public class Corredor implements Runnable {
                         nombreHilo, tramo, totalTramos);
             }
 
-            // Al completar todos los tramos, registra su llegada en el monitor
+            // Cuando completo todos los tramos, registro mi llegada en el monitor
             int puesto = controlCarrera.registrarLlegada(nombreHilo);
             System.out.printf(">>> [%s] HA TERMINADO LA CARRERA (Puesto: %dº) <<<%n",
                     nombreHilo, puesto);

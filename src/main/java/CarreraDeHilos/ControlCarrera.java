@@ -1,8 +1,8 @@
 package CarreraDeHilos;
 
 /**
- * Monitor encargado de gestionar la línea de meta de forma segura entre hilos.
- * Garantiza la exclusión mutua al registrar el orden de llegada y determinar el ganador.
+ * Gestiono la línea de meta de forma segura entre los hilos.
+ * Protejo el registro del orden de llegada y la elección del ganador.
  */
 public class ControlCarrera {
 
@@ -10,7 +10,7 @@ public class ControlCarrera {
     private int posicionActual;
 
     /**
-     * Inicializa el control de meta sin ganador y con el contador de posiciones a cero.
+     * Inicializo el control de meta sin ganador y con las posiciones a cero.
      */
     public ControlCarrera() {
         this.hiloGanador = null;
@@ -18,11 +18,11 @@ public class ControlCarrera {
     }
 
     /**
-     * Registra la llegada de un hilo a la meta de forma sincronizada.
-     * El primer hilo en acceder a este método queda registrado como ganador.
+     * Registro de forma sincronizada la llegada de un hilo a la meta.
+     * Si es el primero en llegar, lo guardo como ganador.
      *
-     * @param nombreHilo Nombre del hilo que acaba de completar todos los tramos.
-     * @return El puesto (1º, 2º, 3º...) en el que ha finalizado el hilo.
+     * @param nombreHilo Nombre del hilo que ha completado todos los tramos.
+     * @return Devuelvo el puesto (1º, 2º, 3º...) en el que ha finalizado.
      */
     public synchronized int registrarLlegada(String nombreHilo) {
         posicionActual++;
@@ -33,9 +33,9 @@ public class ControlCarrera {
     }
 
     /**
-     * Devuelve el nombre del hilo que cruzó la meta en primer lugar.
+     * Consulto el nombre del hilo que cruzó la meta en primer lugar.
      *
-     * @return Nombre del hilo ganador, o {@code null} si aún no ha llegado ninguno.
+     * @return Devuelvo el nombre del ganador, o {@code null} si todavía no ha llegado ninguno.
      */
     public synchronized String getHiloGanador() {
         return hiloGanador;

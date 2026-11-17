@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase principal que configura, inicia y coordina la simulación de la carrera con hilos.
+ * Configuro, inicio y coordino la simulación de la carrera con hilos.
  */
 public class SimulacionCarrera {
 
@@ -17,7 +17,7 @@ public class SimulacionCarrera {
 
         System.out.println("=== INICIO DE LA CARRERA (" + TOTAL_TRAMOS + " tramos) ===");
 
-        // Creación e inicio de los hilos corredores
+        // Creo e inicio los hilos de los corredores
         for (int i = 1; i <= NUM_CORREDORES; i++) {
             Runnable tareaCorredor = new Corredor(TOTAL_TRAMOS, controlCarrera);
             Thread hilo = new Thread(tareaCorredor, "Hilo-Corredor-" + i);
@@ -25,7 +25,7 @@ public class SimulacionCarrera {
             hilo.start();
         }
 
-        // El hilo principal espera a que todos los corredores terminen su ejecución
+        // Espero a que todos los corredores terminen su ejecución
         for (Thread hilo : hilosCorredores) {
             try {
                 hilo.join();
