@@ -2,9 +2,6 @@ package CarreraDeHilos;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Represento a un corredor que avanza por varios tramos de forma concurrente.
- */
 public class Corredor implements Runnable {
 
     private final int totalTramos;
@@ -39,7 +36,6 @@ public class Corredor implements Runnable {
                         nombreHilo, tramo, totalTramos);
             }
 
-            // Cuando completo todos los tramos, registro mi llegada en el monitor
             int puesto = controlCarrera.registrarLlegada(nombreHilo);
             System.out.printf(">>> [%s] HA TERMINADO LA CARRERA (Puesto: %dº) <<<%n",
                     nombreHilo, puesto);

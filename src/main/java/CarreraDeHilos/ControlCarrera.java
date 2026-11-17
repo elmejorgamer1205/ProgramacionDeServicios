@@ -1,9 +1,5 @@
 package CarreraDeHilos;
 
-/**
- * Gestiono la línea de meta de forma segura entre los hilos.
- * Protejo el registro del orden de llegada y la elección del ganador.
- */
 public class ControlCarrera {
 
     private String hiloGanador;

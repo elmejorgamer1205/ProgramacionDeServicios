@@ -3,9 +3,6 @@ package CarreraDeHilos;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Configuro, inicio y coordino la simulación de la carrera con hilos.
- */
 public class SimulacionCarrera {
 
     private static final int NUM_CORREDORES = 4;
